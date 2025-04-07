@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Özür Dilerim</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background-image: url('https://i.pinimg.com/originals/ee/62/4e/ee624edb37d7766c11ac8027c979d55e.jpg');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .content {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 25px;
+      max-width: 700px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .content h1, .content p {
+      color: #d63384;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .buttons button {
+      background-color: #b21f66;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .heart {
+      font-size: 100px;
+      color: #d63384;
+      display: none;
+      animation: pop 0.6s ease forwards;
+      margin-bottom: 20px;
+    }
+
+    @keyframes pop {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <audio autoplay loop>
+    <source src="romantic_background.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+
+  <div class="content">
+    <h1>
+      Hoşgeldin, öncelikle seni ne kadar sevdiğimi bilmeni istiyorum<br>
+      hem arkadaş hem aptal bir aşık olarak.<br><br>
+      Bunlar olduğu için çok kötü hissediyorum.<br>
+      Sana kendimi çok yanlış tanıttım.<br>
+      Senin gözünde böyle olmak istemiyorum.<br>
+      Özür dilerim.
+    </h1>
+
+    <p>Kendimi açıklamama izin verir misin?</p>
+
+    <div class="heart" id="heart">❤️</div>
+
+    <div class="buttons">
+      <button onclick="showHeart()">Evet</button>
+      <button onclick="window.location.href='hayir.html'">Hayır</button>
+    </div>
+  </div>
+
+  <script>
+    function showHeart() {
+      document.getElementById('heart').style.display = 'block';
+      setTimeout(() => {
+        window.location.href = "evet.html";
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>
