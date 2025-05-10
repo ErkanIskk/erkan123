@@ -1,104 +1,101 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Evet Sayfası</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Canım Annem </title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-image: url('https://i.pinimg.com/originals/ee/62/4e/ee624edb37d7766c11ac8027c979d55e.jpg');
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('annem3.jpg');
       background-size: cover;
       background-position: center;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family: Arial, sans-serif;
     }
 
-    .content {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 40px;
-      border-radius: 25px;
-      max-width: 700px;
-      text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-
-    .content h1 {
-      color: #d63384;
-      font-size: 24px;
-      margin-bottom: 30px;
-    }
-
-    .buttons {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .buttons button {
-      background-color: #b21f66;
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      border-radius: 30px;
-      font-size: 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .buttons button span {
-      margin-left: 10px;
-    }
-
-    .heart {
-      font-size: 22px;
-    }
-
-    .popup {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.8);
-      color: white;
+    .ortali-kutu {
+      background: rgba(255, 182, 193, 0.7);
+      border: 2px solid #c71585;
+      border-radius: 20px;
       padding: 20px;
-      border-radius: 10px;
       text-align: center;
-      font-size: 18px;
-      z-index: 9999;
+      max-width: 90%;
+    }
+
+    button {
+      background-color: #ff69b4;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 25px;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #ff1493;
+    }
+
+    .kalp {
+      font-size: 24px;
     }
   </style>
 </head>
 <body>
 
-  <div class="content">
-    <h1>Böyle kötü bir şey yaptığım için özür dilerim. Seni o zaman tanıyor olsam da, olmasam da bu kötü bir hareketti.<br> Ahlaken böyle biri değilim. Seni en doğru şekilde tanımayı ve en doğru şekilde beni tanımanı istiyorum.<br> Hikayeyi tam olarak anlatmama izin verir misin?</h1>
-    <div class="buttons">
-      <button onclick="window.location.href='izin-veriyorum.html'">
-        <span class="heart">❤️</span> İzin Veriyorum
-      </button>
-      <button onclick="window.location.href='hayir.html'">
-        İzin Vermiyorum
-      </button>
-    </div>
+  <div class="ortali-kutu">
+    <p>Canım annem, sen hayatımdaki en güçlü, en şefkatli ve en güzel insansın. <br>
+      Varlığınla bana güven verdin, sevgiyi öğrettin, her düştüğümde elimi tuttun.<br>
+       Senin sıcak gülüşün, sabrın ve sonsuz sevgin olmasaydı bugün olduğum kişi olamazdım. <br>
+       Bu özel günde sana olan sevgimi kelimelere sığdırmak zor.<br>
+       Ama bilmeni isterim ki kalbimin en derin yerinde, her zaman senin için atan bir sevgi var.<br>
+       İyi ki varsın, iyi ki annemsin. Anneler Günün kutlu olsun!</p><br>
+    <button onclick="kalpAnimasyonu()">
+      <span class="kalp">♥</span>
+    </button>
   </div>
 
-  <script>
-    function showPopup() {
-      var popup = document.getElementById("popup");
-      popup.style.display = "block";
+  <audio id="arkaplanMuzik" loop>
+    <source src="annem.mp3" type="audio/mpeg">
+  </audio>
 
-      // Popup'ı 3 saniye sonra gizlemek
-      setTimeout(function() {
-        popup.style.display = "none";
-      }, 3000);
+  <script>
+    if (localStorage.getItem("muzikCal") === "evet") {
+      document.getElementById("arkaplanMuzik").play().catch(() => {});
+    }
+
+    function kalpAnimasyonu() {
+      const kalp = document.createElement("div");
+      kalp.innerHTML = "♥";
+      kalp.style.position = "fixed";
+      kalp.style.fontSize = "80px";
+      kalp.style.color = "deeppink";
+      kalp.style.top = "50%";
+      kalp.style.left = "50%";
+      kalp.style.transform = "translate(-50%, -50%) scale(0.5)";
+      kalp.style.opacity = "0";
+      kalp.style.transition = "all 1s ease";
+
+      document.body.appendChild(kalp);
+
+      requestAnimationFrame(() => {
+        kalp.style.transform = "translate(-50%, -50%) scale(1.5)";
+        kalp.style.opacity = "1";
+      });
+
+      setTimeout(() => {
+        kalp.remove();
+        window.location.href = 'hayir.html';
+      }, 1200);
     }
   </script>
 

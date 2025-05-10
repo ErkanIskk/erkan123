@@ -1,62 +1,87 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Bir Şans Daha</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Son Bir Söz</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
-      font-family: 'Quicksand', sans-serif;
-      background-image: url('https://i.pinimg.com/originals/ee/62/4e/ee624edb37d7766c11ac8027c979d55e.jpg');
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url('annem2.jpg');
       background-size: cover;
       background-position: center;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-family: Arial, sans-serif;
     }
 
-    .content {
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 40px;
-      border-radius: 25px;
-      max-width: 700px;
+    .ortali-kutu {
+      background: rgba(255, 182, 193, 0.7);
+      border: 2px solid #c71585;
+      border-radius: 20px;
+      padding: 20px;
       text-align: center;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      max-width: 90%;
     }
 
-    .content p {
-      color: #d63384;
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
-
-    button {
-      background-color: #b21f66;
-      color: white;
+    .mektup-buton {
+      margin-top: 30px;
+      background-color: #ff69b4;
       border: none;
-      padding: 12px 30px;
+      padding: 16px;
       border-radius: 30px;
-      font-size: 16px;
+      font-size: 28px;
       cursor: pointer;
+      color: white;
     }
 
-    button:hover {
-      background-color: #99134e;
+    .mektup-buton:hover {
+      background-color: #ff1493;
+    }
+
+    #yazi-kutusu {
+      display: none;
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      border: 2px solid #c71585;
+      max-width: 90%;
     }
   </style>
 </head>
 <body>
 
-  <div class="content">
-    <p>
-      Tanrı bile affedicidir.<br>
-      Bu hatalı kuluna bir şans vermen gerek.
-    </p>
-    <button onclick="window.location.href='index.html'"></button>Şans Ver</button>
+  <div class="ortali-kutu">
+    <p>Hep böyle neşeli ol canım annem. Ne kadar uzakta olursam olayım hep yanında olucağım. Seni çok seviyorum. </p>
   </div>
+
+  <button class="mektup-buton" onclick="yaziGoster()">✉</button>
+
+  <div id="yazi-kutusu">
+    <p>Sevgilerle biricik ilk göz ağrın.</p>
+  </div>
+
+  <audio id="arkaplanMuzik" loop>
+    <source src="annem.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    if (localStorage.getItem("muzikCal") === "evet") {
+      document.getElementById("arkaplanMuzik").play().catch(() => {});
+    }
+
+    function yaziGoster() {
+      document.getElementById('yazi-kutusu').style.display = 'block';
+    }
+  </script>
 
 </body>
 </html>
